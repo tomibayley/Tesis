@@ -11,15 +11,15 @@ import 'package:flutter_xlider/flutter_xlider.dart';
 
 var Volumen = true; //No muteado
 var volslider = 5.0, //Valores que manejan el slider
-    agslider = 5.0,
-    meslider = 5.0,
-    meagslider = 5.0,
-    grslider = 5.0,
+    agslider = 10.0,
+    meslider = 10.0,
+    meagslider = 10.0,
+    grslider = 10.0,
     vol = 5.0, //valores reales
-    med = 5.0,
-    meag = 5.0,
-    ag = 5.0,
-    gr = 5.0,
+    med = 10.0,
+    meag = 10.0,
+    ag = 10.0,
+    gr = 10.0,
     oldvol = vol; //Para guardar en caso de muteo
 
 var entvol = 0; //variables de conversión
