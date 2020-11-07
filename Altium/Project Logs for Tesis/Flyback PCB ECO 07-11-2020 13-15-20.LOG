@@ -1,0 +1,59 @@
+Removed Pin From Net: NetName=NetC1_1 Pin=C1-1
+Removed Pin From Net: NetName=NetC3_2 Pin=C7-1
+Change Component Footprint: Designator=C4 Old Footprint=CAPR D630 H800 R300 mil New Footprint=CAPR D630 H630 R300 mil
+Change Component Footprint: Designator=C1 Old Footprint=CAPR D630 H800 R300 mil New Footprint=CAPR D630 H1000 R300 mil
+Change Component Footprint: Designator=P4 Old Footprint=HDR1X3 New Footprint=bornera 3
+Change Component Footprint: Designator=R2 Old Footprint=R1206 New Footprint=1206 resistor
+Change Component Footprint: Designator=R5 Old Footprint=R1206 New Footprint=1206 resistor
+Change Component Footprint: Designator=R4 Old Footprint=R1206 New Footprint=Trimpot Horizontal
+Change Component Footprint: Designator=C6 Old Footprint=RAD-0.3 New Footprint=CAPR D250 H450 R100 mil
+Change Component Footprint: Designator=C7 Old Footprint=RAD-0.3 New Footprint=CAPR D630 H1000 R300 mil
+Change Component Comment : Designator=C7 Old Comment=Cap New Comment=Cap Pol1
+Change Component Comment : Designator=R4 Old Comment=Res2 New Comment=Trimpot
+Change component parameters: Designator = "R6" ("R6"); Footprint = "R1206"; UniqueID = "\XWIEXKRT\OKXOWALB" ("\XWIEXKRT\OKXOWALB")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Axial Device, Thru-Hole; 2 Leads; 0.4 in Pin Spacing"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "AXIAL-0.4"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C7" ("C7"); Footprint = "RAD-0.3"; UniqueID = "\XWIEXKRT\TSXDUWKD" ("\XWIEXKRT\TSXDUWKD")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "330uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4" ("R4"); Footprint = "R1206"; UniqueID = "\XWIEXKRT\WXPYVJOL" ("\XWIEXKRT\WXPYVJOL")
+Change component parameters (AddParameter): Name = "CODIGO STI"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "FABRICANTE"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PROVEEDOR"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "VALOR"; Value = "1K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC1_1 Pin=C7-1
+Added Pin To Net: NetName=Pwr Gnd Pin=C7-2
+Added Pin To Net: NetName=NetC8_1 Pin=L2-1
+Added Pin To Net: NetName=NetR4_1 Pin=R4-3
+Change Net Name : Old Net Name=NetC1_1 New Net Name=NetC7_1
+Change Net Name : Old Net Name=Pwr Gnd New Net Name=NetC1_2
+Added Pin To Net: NetName=NetC1_1 Pin=C1-1
+Added Pin To Net: NetName=NetC1_1 Pin=L1-1
+Added Net: Name=NetC1_1
+Added Pin To Net: NetName=NetC32_2 Pin=D9-1
+Added Net: Name=NetC32_2
+Added Net: Name=NetD?_2
+Added Net: Name=NetF3_1
+Added Net: Name=NetF4_2
+Added Room: Name=Amplificador Clase D
+Added Room: Name=Filtros
+Added Room: Name=Fly-Back
+Added Room: Name=Ganancia
+Added Room: Name=Generador De Retardo
+Added Room: Name=Mosfet Driver
+Added Room: Name=Pasa Altos
+Added Room: Name=Pasa Bajos
+Added Room: Name=Pasa Banda Inferior
+Added Room: Name=Pasa Banda Superior
+Added Room: Name=Step Down
+Added Room: Name=Triangular

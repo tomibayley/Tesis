@@ -1,0 +1,10 @@
+Added Component: Designator=transformador(TRAFO 2.5*3)
+Added Pin To Net: NetName=NetC3_1 Pin=transformador-1
+Added Pin To Net: NetName=NetC2_1 Pin=transformador-2
+Added Pin To Net: NetName=NetC3_2 Pin=transformador-5
+Added Pin To Net: NetName=NetD8_1 Pin=transformador-6
+Added Pin To Net: NetName=NetC4_2 Pin=transformador-7
+Added Pin To Net: NetName=NetD5_1 Pin=transformador-8
+Added Pin To Net: NetName=NetC1_2 Pin=transformador-9
+Added Pin To Net: NetName=NetD1_1 Pin=transformador-10
+Added Member To Class: ClassName=Fly-Back Member=Component transformador Transformador 10 pines

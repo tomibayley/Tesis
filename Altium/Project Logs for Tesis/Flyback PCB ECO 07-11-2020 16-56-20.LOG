@@ -1,0 +1,14 @@
+Added Pin To Net: NetName=NetC1_1 Pin=D1-3
+Added Pin To Net: NetName=NetC8_1 Pin=D5-3
+Added Room: Name=Amplificador Clase D
+Added Room: Name=Filtros
+Added Room: Name=Fly-Back
+Added Room: Name=Ganancia
+Added Room: Name=Generador De Retardo
+Added Room: Name=Mosfet Driver
+Added Room: Name=Pasa Altos
+Added Room: Name=Pasa Bajos
+Added Room: Name=Pasa Banda Inferior
+Added Room: Name=Pasa Banda Superior
+Added Room: Name=Step Down
+Added Room: Name=Triangular

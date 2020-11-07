@@ -1,0 +1,18 @@
+Added Pin To Net: NetName=NetC2_1 Pin=P6-1
+Added Pin To Net: NetName=NetQ1_2 Pin=P7-1
+Change Net Name : Old Net Name=NetD?_2 New Net Name=NetD10_2
+Change Net Name : Old Net Name=NetQ1_2 New Net Name=NetP7_1
+Added Member To Class: ClassName=Fly-Back Member=Component P6 Plug
+Added Member To Class: ClassName=Fly-Back Member=Component P7 Plug
+Added Room: Name=Amplificador Clase D
+Added Room: Name=Filtros
+Added Room: Name=Fly-Back
+Added Room: Name=Ganancia
+Added Room: Name=Generador De Retardo
+Added Room: Name=Mosfet Driver
+Added Room: Name=Pasa Altos
+Added Room: Name=Pasa Bajos
+Added Room: Name=Pasa Banda Inferior
+Added Room: Name=Pasa Banda Superior
+Added Room: Name=Step Down
+Added Room: Name=Triangular
