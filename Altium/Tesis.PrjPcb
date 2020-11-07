@@ -55,23 +55,6 @@ GenerateClassCluster=0
 DocumentUniqueId=JXHTBYVS
 
 [Document2]
-DocumentPath=Half-Bridge.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=MCARUKKW
-
-[Document3]
 DocumentPath=Fly-Back.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -88,7 +71,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UXFBHDEW
 
-[Document4]
+[Document3]
 DocumentPath=Filtros.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -105,7 +88,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NHCLEEIX
 
-[Document5]
+[Document4]
 DocumentPath=Amplificador Clase D.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -122,24 +105,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ZJUHYKJG
 
-[Document6]
-DocumentPath=..\..\AD20\Library\XR2206.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=OZWGWVPR
-
-[Document7]
+[Document5]
 DocumentPath=Step Down.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -156,7 +122,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UJNYLUYE
 
-[Document8]
+[Document6]
 DocumentPath=Triangular.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -173,7 +139,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=RQKJGLFU
 
-[Document9]
+[Document7]
 DocumentPath=Pasa Bajos.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -190,7 +156,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TDHEBFVH
 
-[Document10]
+[Document8]
 DocumentPath=Pasa Banda Inferior.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -207,7 +173,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ZOURLHVO
 
-[Document11]
+[Document9]
 DocumentPath=Pasa Banda Superior.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -224,7 +190,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FNWKJGRK
 
-[Document12]
+[Document10]
 DocumentPath=Pasa Altos.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -241,7 +207,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QVPYLHRM
 
-[Document13]
+[Document11]
 DocumentPath=Ganancia.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -258,24 +224,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SENBCWGG
 
-[Document14]
-DocumentPath=..\..\AD20\Library\Userlib.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=QKBCKMGM
-
-[Document15]
+[Document12]
 DocumentPath=Filtros.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -292,7 +241,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YNOQAHAY
 
-[Document16]
+[Document13]
 DocumentPath=Generador De Retardo.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -309,7 +258,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ZVXQUWOU
 
-[Document17]
+[Document14]
 DocumentPath=Mosfet Driver.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -325,6 +274,23 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VUDZEFIV
+
+[Document15]
+DocumentPath=Flyback.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=JVFRUNTX
 
 [Configuration1]
 Name=Sources
@@ -445,7 +411,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Microsoft Print to PDF
+TargetPrinter=HP LaserJet CP 1025nw
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
