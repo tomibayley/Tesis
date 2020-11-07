@@ -1,0 +1,42 @@
+name: flutter_bluetooth_serial_example
+version: 0.2.2
+description: Demonstrates how to use the `flutter_bluetooth_serial` plugin.
+authors: 
+          Ignacio Arias
+homepage: https://github.com/edufolly/flutter_bluetooth_serial/tree/master/example/
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  scoped_model: ^1.0.1
+
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+
+  flutter_test:
+    sdk: flutter
+
+  flutter_bluetooth_serial:
+    path: ../
+
+  flutter_xlider:
+    path: C:\flutter/packages/flutter_xlider
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/fondoinicio.jpg
+    - images/Caratula.jpg
+    - images/LogoUTN.png
+
+
+flutter_launcher_icons: "^0.7.5"
+
+flutter_icons:
+  adaptive_icon_background: #ffffff
+  android: "launcher_icon"
+  ios: true
+  image_path: "D:/FLUTTER_SERIAL0905/flutter_bluetooth_serial-master/example/Icono/Pikachu.png"
+
