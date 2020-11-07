@@ -123,23 +123,6 @@ GenerateClassCluster=0
 DocumentUniqueId=ZJUHYKJG
 
 [Document6]
-DocumentPath=..\..\AD20\Library\XR2206.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=OZWGWVPR
-
-[Document7]
 DocumentPath=Step Down.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -156,7 +139,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UJNYLUYE
 
-[Document8]
+[Document7]
 DocumentPath=Triangular.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -173,7 +156,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=RQKJGLFU
 
-[Document9]
+[Document8]
 DocumentPath=Pasa Bajos.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -190,7 +173,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TDHEBFVH
 
-[Document10]
+[Document9]
 DocumentPath=Pasa Banda Inferior.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -207,7 +190,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ZOURLHVO
 
-[Document11]
+[Document10]
 DocumentPath=Pasa Banda Superior.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -224,7 +207,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FNWKJGRK
 
-[Document12]
+[Document11]
 DocumentPath=Pasa Altos.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -241,7 +224,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QVPYLHRM
 
-[Document13]
+[Document12]
 DocumentPath=Ganancia.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -258,24 +241,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SENBCWGG
 
-[Document14]
-DocumentPath=..\..\AD20\Library\Userlib.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=QKBCKMGM
-
-[Document15]
+[Document13]
 DocumentPath=Filtros.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -292,7 +258,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YNOQAHAY
 
-[Document16]
+[Document14]
 DocumentPath=Generador De Retardo.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -309,7 +275,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ZVXQUWOU
 
-[Document17]
+[Document15]
 DocumentPath=Mosfet Driver.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
