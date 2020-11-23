@@ -1,0 +1,13 @@
+Added Component: Designator=D4(RS405M)
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "E2732B"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "29-May-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Sch pins A & K swapped."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Bridge Rectifier; 4 Terminals; Body 9.4 x 9.4 mm (typ); Pitch 5.08 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "D-38"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC3_1 Pin=D4-1
+Added Pin To Net: NetName=NetD4_2 Pin=D4-2
+Added Pin To Net: NetName=NetC3_2 Pin=D4-3
+Added Pin To Net: NetName=NetD4_4 Pin=D4-4
+Added Member To Class: ClassName=Fly-Back Member=Component D4 RS405M
