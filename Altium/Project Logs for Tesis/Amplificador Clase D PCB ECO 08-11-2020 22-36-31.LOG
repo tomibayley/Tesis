@@ -1,0 +1,21 @@
+Added Pin To Net: NetName=NetD23_1 Pin=Q2-1
+Added Pin To Net: NetName=64V Pin=Q2-2
+Added Pin To Net: NetName=NetC34_2 Pin=Q2-3
+Added Pin To Net: NetName=NetD25_1 Pin=Q3-1
+Added Pin To Net: NetName=NetC34_2 Pin=Q3-2
+Added Pin To Net: NetName=GND Pin=Q3-3
+Added Member To Class: ClassName=Amplificador Clase D Member=Component Q2 IRFZ24N
+Added Member To Class: ClassName=Amplificador Clase D Member=Component Q3 IRFZ24N
+Added Member To Class: ClassName=Generador De Retardo Member=Component  CD4049
+Added Room: Name=Amplificador Clase D
+Added Room: Name=Filtros
+Added Room: Name=Fly-Back
+Added Room: Name=Ganancia
+Added Room: Name=Generador De Retardo
+Added Room: Name=Mosfet Driver
+Added Room: Name=Pasa Altos
+Added Room: Name=Pasa Bajos
+Added Room: Name=Pasa Banda Inferior
+Added Room: Name=Pasa Banda Superior
+Added Room: Name=Step Down
+Added Room: Name=Triangular

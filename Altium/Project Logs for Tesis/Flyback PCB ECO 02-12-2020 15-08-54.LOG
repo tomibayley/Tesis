@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=Net*2_6 Pin=D2-1
+Removed Pin From Net: NetName=NetC2_1 Pin=D2-3
+Added Pin To Net: NetName=NetC2_1 Pin=D2-1
+Added Pin To Net: NetName=Net*2_6 Pin=D2-3
+Added Room: Name=Amplificador Clase D
+Added Room: Name=Fly-Back
+Added Room: Name=Negative Pwr
+Added Room: Name=Positive Pwr

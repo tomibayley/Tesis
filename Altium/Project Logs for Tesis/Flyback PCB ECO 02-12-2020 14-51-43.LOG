@@ -1,0 +1,12 @@
+Added Component: Designator=*3(Transformador_flyback - duplicate)
+Added Pin To Net: NetName=Net*2_1 Pin=*3-1
+Added Pin To Net: NetName=Net*3_2 Pin=*3-2
+Added Pin To Net: NetName=Net*2_3 Pin=*3-3
+Added Pin To Net: NetName=Net*3_4 Pin=*3-4
+Added Pin To Net: NetName=Net*3_5 Pin=*3-5
+Added Pin To Net: NetName=Net*3_6 Pin=*3-6
+Added Member To Class: ClassName=Negative Pwr Member=Component *3 Transformador 3
+Added Room: Name=Amplificador Clase D
+Added Room: Name=Fly-Back
+Added Room: Name=Negative Pwr
+Added Room: Name=Positive Pwr
