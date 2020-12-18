@@ -1,0 +1,361 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11/12/2020</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">15:21:48</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc" class="file"><acronym title="C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc">C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">7</td></tr>
+</table>
+</td>
+</table><a name="IDVQOST3CYU03XOJUNES1QUEJSOFOA014LYMBOTYECNOM01YYVROHI"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4FI10E3G5IGQBSLFPBEMTOTBZBQG10UQ0XEK0GGEQW0BQPNRFPFK">Clearance Constraint (Gap=30mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPBI24YYATINBLJ0LOCZPQVPK1CKQ0GLXBZJ4G1NQUPUYH0EL21QJ">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIOMWWUO5RHSOHBPB3W2DOU3OHFUVQBYZUOWL4WMJDUPWQBIK1GBF">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJNCXNQIAMBITIGYOOG01P0KITE1N2KVPC04XJK55N5W0OUH5E0J">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPAYAGAQ2QKUKGKYZNRPWYMJCRFX1RHTJR2F5SYKVJ0BCNRRP3LPF">Width Constraint (Min=20mil) (Max=90mil) (Preferred=60mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1MT2USRBMFAOH3X3OAG0SVBFEI25TMTFWJB2FJW32MLY55Z3B3C">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXEDLEZWJB3XIEDETTSWP23J1TLLIKPJWOKNXTHF5D5UC4N1FMDKH">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLQQZI0DN4CJWDRILJR5FFSYYYZ05SR2WM4LC2M23OGKXZ2PZZ1D">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLUJQQ1VPQTK4FDVTDA53RRJSPM0RW2GU1V1SQ5DJS121NP5QFCBE">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOMZMCK5RRXILOYGRJMKYKYHNYBOQBPT5EQZOMBAF5GWP4XS1UTJ">Silk To Solder Mask (Clearance=0mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYRDTKZPROVV4PQFN2HUBWEMECKFAAQURBRGBOEG4CO0C4FQ5VXQE">Silk to Silk (Clearance=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCBEZDJXVR4EMP4KJSF4N2FWYNDMXEEWYEGCXJ1GXWJHP20A4BM5C">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYTCCSV4XOU14EH5U4YN2ZJHAPJG3VAMI302WFMEAG4EEM3O4EN">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">7</td>
+</tr>
+</table><br><a name="IDIOMWWUO5RHSOHBPB3W2DOU3OHFUVQBYZUOWL4WMJDUPWQBIK1GBF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4725mil|Location2.X=4940mil|Location1.Y=3635mil|Location2.Y=4134.488mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4725mil|Location2.X=4940mil|Location1.Y=3635mil|Location2.Y=4134.488mil|Absolute=True">Un-Routed Net Constraint: Net NetD25_1 Between Track (4825mil,3735mil)(4840mil,3720mil) on Bottom Layer And Pad D25-1(4840mil,4034.488mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXEDLEZWJB3XIEDETTSWP23J1TLLIKPJWOKNXTHF5D5UC4N1FMDKH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2359.375mil|Location2.X=2500.625mil|Location1.Y=4539.375mil|Location2.Y=4680.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2359.375mil|Location2.X=2500.625mil|Location1.Y=4539.375mil|Location2.Y=4680.625mil|Absolute=True">Hole Size Constraint: (140mil &gt; 100mil) Pad Free-1(2430mil,4610mil) on Multi-Layer Actual Hole Size = 140mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2414.375mil|Location2.X=2555.625mil|Location1.Y=1489.375mil|Location2.Y=1630.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2414.375mil|Location2.X=2555.625mil|Location1.Y=1489.375mil|Location2.Y=1630.625mil|Absolute=True">Hole Size Constraint: (140mil &gt; 100mil) Pad Free-1(2485mil,1560mil) on Multi-Layer Actual Hole Size = 140mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5999.375mil|Location2.X=6140.625mil|Location1.Y=4569.375mil|Location2.Y=4710.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5999.375mil|Location2.X=6140.625mil|Location1.Y=4569.375mil|Location2.Y=4710.625mil|Absolute=True">Hole Size Constraint: (140mil &gt; 100mil) Pad Free-1(6070mil,4640mil) on Multi-Layer Actual Hole Size = 140mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6014.375mil|Location2.X=6155.625mil|Location1.Y=1419.375mil|Location2.Y=1560.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6014.375mil|Location2.X=6155.625mil|Location1.Y=1419.375mil|Location2.Y=1560.625mil|Absolute=True">Hole Size Constraint: (140mil &gt; 100mil) Pad Free-1(6085mil,1490mil) on Multi-Layer Actual Hole Size = 140mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLUJQQ1VPQTK4FDVTDA53RRJSPM0RW2GU1V1SQ5DJS121NP5QFCBE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.375mil|Location2.X=4170.625mil|Location1.Y=2827.625mil|Location2.Y=2838.875mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.375mil|Location2.X=4170.625mil|Location1.Y=2827.625mil|Location2.Y=2838.875mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (8.5mil &lt; 10mil) Between Pad -2(4165mil,2780mil) on Multi-Layer And Pad R32-2(4165mil,2861mil) on Bottom Layer [Bottom Solder] Mask Sliver [8.5mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDCBEZDJXVR4EMP4KJSF4N2FWYNDMXEEWYEGCXJ1GXWJHP20A4BM5C"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4816.5mil|Location2.X=4872.743mil|Location1.Y=3696.5mil|Location2.Y=3785.364mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4816.5mil|Location2.X=4872.743mil|Location1.Y=3696.5mil|Location2.Y=3785.364mil|Absolute=True">Net Antennae: Track (4840mil,3650mil)(4840mil,3720mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

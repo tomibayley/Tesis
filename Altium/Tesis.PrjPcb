@@ -377,6 +377,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VFVXMYYL
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Tesis\Design Rule Check - Amplificador Clase D.html
+DItemRevisionGUID=
+
 [SearchPath1]
 Path=..\Library\*.*
 IncludeSubFolders=1
