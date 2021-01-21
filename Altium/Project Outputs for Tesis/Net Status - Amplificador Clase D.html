@@ -1,0 +1,680 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body { 
+			font-family : segoe ui;
+		}
+
+		td, th {  
+			padding: 0.5em;
+			text-align : left;
+		}
+		th { 
+			background-color : #EEEEEE;
+		
+		}
+		th.column1, td.column1 { 
+			width : 50%; 
+		}
+
+        th.column2, td.column2 {
+            width : 25%;
+        }
+
+		table { 
+			width : 100%; 
+            font-size: 0.9em;
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 5em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Net Status Report</title>
+</head>
+<body onload="document.getElementById('radio_mil').click()"><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">13/01/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">15:18:39</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc" class="file"><acronym title="C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc">C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table><a name="IDN5NGK212CIDQKWX4KF44BTBAUP4LWSN5PNFEM2OM35MJHRB3PGUB"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1904.504mil|Location2.X=3675.496mil|Location1.Y=1456mil|Location2.Y=3149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1904.504mil|Location2.X=3675.496mil|Location1.Y=1456mil|Location2.Y=3149mil|Absolute=True">-12V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="45676747">4567.675mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.472mil|Location2.X=5099mil|Location1.Y=3126.472mil|Location2.Y=3859mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.472mil|Location2.X=5099mil|Location1.Y=3126.472mil|Location2.Y=3859mil|Absolute=True">-20V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="22505432">2250.543mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3410mil|Location2.X=6213.213mil|Location1.Y=1586mil|Location2.Y=4179mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3410mil|Location2.X=6213.213mil|Location1.Y=1586mil|Location2.Y=4179mil|Absolute=True">-32V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="88352503">8835.25mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1904.504mil|Location2.X=3765mil|Location1.Y=1456mil|Location2.Y=4145mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1904.504mil|Location2.X=3765mil|Location1.Y=1456mil|Location2.Y=4145mil|Absolute=True">12V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="74129059">7412.906mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5281mil|Location2.X=6445mil|Location1.Y=1425mil|Location2.Y=3103.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5281mil|Location2.X=6445mil|Location1.Y=1425mil|Location2.Y=3103.213mil|Absolute=True">32V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="31364248">3136.425mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1750mil|Location2.X=6319.213mil|Location1.Y=1420mil|Location2.Y=4175mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1750mil|Location2.X=6319.213mil|Location1.Y=1420mil|Location2.Y=4175mil|Absolute=True">GND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="151192241">15119.224mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49315.5mil|Location2.X=49856.65mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49315.5mil|Location2.X=49856.65mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True">Net*2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50134.996mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50134.996mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True">Net*2_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49871.878mil|Location2.X=50483.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49871.878mil|Location2.X=50483.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True">Net*2_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=49842.87mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=49842.87mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True">Net*2_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50261.5mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50261.5mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True">Net*2_5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50064.004mil|Location2.X=50134.996mil|Location1.Y=49964.004mil|Location2.Y=50034.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50064.004mil|Location2.X=50134.996mil|Location1.Y=49964.004mil|Location2.Y=50034.996mil|Absolute=True">Net*2_6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50134.996mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50134.996mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True">Net*3_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=49842.87mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=49842.87mil|Location1.Y=49956.13mil|Location2.Y=50042.87mil|Absolute=True">Net*3_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50433.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49756.13mil|Location2.X=50433.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True">Net*3_5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50064.004mil|Location2.X=50134.996mil|Location1.Y=49964.004mil|Location2.Y=50034.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50064.004mil|Location2.X=50134.996mil|Location1.Y=49964.004mil|Location2.Y=50034.996mil|Absolute=True">Net*3_6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49914.004mil|Location2.X=50242.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49914.004mil|Location2.X=50242.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True">NetC13_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49913mil|Location2.X=50084.996mil|Location1.Y=49963mil|Location2.Y=50034.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49913mil|Location2.X=50084.996mil|Location1.Y=49963mil|Location2.Y=50034.996mil|Absolute=True">NetC14_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2426mil|Location2.X=2665mil|Location1.Y=1602.5mil|Location2.Y=2236.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2426mil|Location2.X=2665mil|Location1.Y=1602.5mil|Location2.Y=2236.5mil|Absolute=True">NetC16_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9293807">929.381mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2700mil|Location2.X=3079mil|Location1.Y=1646.473mil|Location2.Y=2236.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2700mil|Location2.X=3079mil|Location1.Y=1646.473mil|Location2.Y=2236.5mil|Absolute=True">NetC16_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9147740">914.774mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3294.504mil|Location2.X=3789mil|Location1.Y=1961mil|Location2.Y=2319mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3294.504mil|Location2.X=3789mil|Location1.Y=1961mil|Location2.Y=2319mil|Absolute=True">NetC19_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7180000">718mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2907.5mil|Location2.X=3265.496mil|Location1.Y=1836.63mil|Location2.Y=2035.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2907.5mil|Location2.X=3265.496mil|Location1.Y=1836.63mil|Location2.Y=2035.496mil|Absolute=True">NetC19_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4393626">439.363mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806mil|Location2.X=4005mil|Location1.Y=2086mil|Location2.Y=2619mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3806mil|Location2.X=4005mil|Location1.Y=2086mil|Location2.Y=2619mil|Absolute=True">NetC20_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5420634">542.063mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3615mil|Location2.X=4095mil|Location1.Y=1855mil|Location2.Y=2799mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3615mil|Location2.X=4095mil|Location1.Y=1855mil|Location2.Y=2799mil|Absolute=True">NetC21_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="18627293">1862.729mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49709.8mil|Location2.X=49942.87mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49709.8mil|Location2.X=49942.87mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True">NetC2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1564mil|Location2.X=5855mil|Location1.Y=1175mil|Location2.Y=3463.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1564mil|Location2.X=5855mil|Location1.Y=1175mil|Location2.Y=3463.528mil|Absolute=True">NetC31_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="98070882">9807.088mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4917.257mil|Location2.X=5555.496mil|Location1.Y=3464.504mil|Location2.Y=3579mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4917.257mil|Location2.X=5555.496mil|Location1.Y=3464.504mil|Location2.Y=3579mil|Absolute=True">NetC31_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6266089">626.609mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2026mil|Location2.X=2664mil|Location1.Y=1456mil|Location2.Y=1885.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2026mil|Location2.X=2664mil|Location1.Y=1456mil|Location2.Y=1885.496mil|Absolute=True">NetC33_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="8097056">809.706mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1643.5mil|Location2.X=1819mil|Location1.Y=2656.472mil|Location2.Y=2975.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1643.5mil|Location2.X=1819mil|Location1.Y=2656.472mil|Location2.Y=2975.496mil|Absolute=True">NetC33_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3925685">392.569mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5351mil|Location2.X=5733.528mil|Location1.Y=2216.472mil|Location2.Y=2379mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5351mil|Location2.X=5733.528mil|Location1.Y=2216.472mil|Location2.Y=2379mil|Absolute=True">NetC38_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3331371">333.137mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49856.13mil|Location2.X=50261.5mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49856.13mil|Location2.X=50261.5mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True">NetC3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5321mil|Location2.X=5613.528mil|Location1.Y=1501mil|Location2.Y=1599mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5321mil|Location2.X=5613.528mil|Location1.Y=1501mil|Location2.Y=1599mil|Absolute=True">NetC40_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2141422">214.142mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.63mil|Location2.X=3684mil|Location1.Y=3484.504mil|Location2.Y=3883.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.63mil|Location2.X=3684mil|Location1.Y=3484.504mil|Location2.Y=3883.37mil|Absolute=True">NetC52_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6556844">655.684mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1724mil|Location2.X=1894mil|Location1.Y=1748mil|Location2.Y=2752.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1724mil|Location2.X=1894mil|Location1.Y=1748mil|Location2.Y=2752.5mil|Absolute=True">NetC53_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9027939">902.794mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49914.004mil|Location2.X=50242.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49914.004mil|Location2.X=50242.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True">NetC6_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49913mil|Location2.X=50084.996mil|Location1.Y=49963mil|Location2.Y=50034.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49913mil|Location2.X=50084.996mil|Location1.Y=49963mil|Location2.Y=50034.996mil|Absolute=True">NetC7_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49709.8mil|Location2.X=49942.87mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49709.8mil|Location2.X=49942.87mil|Location1.Y=49931.5mil|Location2.Y=50089.5mil|Absolute=True">NetC9_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50013mil|Location2.X=50089mil|Location1.Y=49963mil|Location2.Y=50036mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50013mil|Location2.X=50089mil|Location1.Y=49963mil|Location2.Y=50036mil|Absolute=True">NetD10_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50242.87mil|Location1.Y=49915.973mil|Location2.Y=50042.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50242.87mil|Location1.Y=49915.973mil|Location2.Y=50042.87mil|Absolute=True">NetD13_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49809.5mil|Location2.X=50033.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49809.5mil|Location2.X=50033.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True">NetD1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49821.878mil|Location2.X=50203.5mil|Location1.Y=49955.5mil|Location2.Y=50043.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49821.878mil|Location2.X=50203.5mil|Location1.Y=49955.5mil|Location2.Y=50043.5mil|Absolute=True">NetD1_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5366mil|Location2.X=5749mil|Location1.Y=2796mil|Location2.Y=3276.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5366mil|Location2.X=5749mil|Location1.Y=2796mil|Location2.Y=3276.5mil|Absolute=True">NetD23_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6841808">684.181mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5001mil|Location2.X=5643mil|Location1.Y=3136.23mil|Location2.Y=3725.325mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5001mil|Location2.X=5643mil|Location1.Y=3136.23mil|Location2.Y=3725.325mil|Absolute=True">NetD23_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9760607">976.061mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5040.013mil|Location2.X=5749mil|Location1.Y=1906mil|Location2.Y=2797mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5040.013mil|Location2.X=5749mil|Location1.Y=1906mil|Location2.Y=2797mil|Absolute=True">NetD25_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="12439149">1243.915mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5001mil|Location2.X=5162.5mil|Location1.Y=2826.5mil|Location2.Y=3063.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5001mil|Location2.X=5162.5mil|Location1.Y=2826.5mil|Location2.Y=3063.528mil|Absolute=True">NetD25_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2443283">244.328mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49955.5mil|Location2.X=50242.87mil|Location1.Y=49955.5mil|Location2.Y=50043.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49955.5mil|Location2.X=50242.87mil|Location1.Y=49955.5mil|Location2.Y=50043.5mil|Absolute=True">NetD3_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50013mil|Location2.X=50089mil|Location1.Y=49963mil|Location2.Y=50036mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50013mil|Location2.X=50089mil|Location1.Y=49963mil|Location2.Y=50036mil|Absolute=True">NetD4_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50242.87mil|Location1.Y=49915.973mil|Location2.Y=50042.87mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50242.87mil|Location1.Y=49915.973mil|Location2.Y=50042.87mil|Absolute=True">NetD7_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49955.5mil|Location2.X=50242.87mil|Location1.Y=49955.5mil|Location2.Y=50043.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49955.5mil|Location2.X=50242.87mil|Location1.Y=49955.5mil|Location2.Y=50043.5mil|Absolute=True">NetD9_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49462.625mil|Location2.X=50233.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49462.625mil|Location2.X=50233.5mil|Location1.Y=49945.5mil|Location2.Y=50053.5mil|Absolute=True">NetF1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50121.878mil|Location2.X=50553.525mil|Location1.Y=49971.878mil|Location2.Y=50040.1mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=50121.878mil|Location2.X=50553.525mil|Location1.Y=49971.878mil|Location2.Y=50040.1mil|Absolute=True">NetF1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1644mil|Location2.X=4846mil|Location1.Y=1255mil|Location2.Y=2869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1644mil|Location2.X=4846mil|Location1.Y=1255mil|Location2.Y=2869mil|Absolute=True">NetL7_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="61301152">6130.115mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49864.004mil|Location2.X=50183.027mil|Location1.Y=49915.973mil|Location2.Y=50034.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49864.004mil|Location2.X=50183.027mil|Location1.Y=49915.973mil|Location2.Y=50034.996mil|Absolute=True">NetP11_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1896mil|Location2.X=2120mil|Location1.Y=2571mil|Location2.Y=3244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1896mil|Location2.X=2120mil|Location1.Y=2571mil|Location2.Y=3244mil|Absolute=True">NetP12_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7048885">704.889mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1876mil|Location2.X=2563.37mil|Location1.Y=2461mil|Location2.Y=2669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1876mil|Location2.X=2563.37mil|Location1.Y=2461mil|Location2.Y=2669mil|Absolute=True">NetP12_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7396269">739.627mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021mil|Location2.X=2119mil|Location1.Y=2201mil|Location2.Y=2423.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021mil|Location2.X=2119mil|Location1.Y=2201mil|Location2.Y=2423.528mil|Absolute=True">NetP13_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1400000">140mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1906.473mil|Location2.X=2004mil|Location1.Y=1881mil|Location2.Y=2299mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1906.473mil|Location2.X=2004mil|Location1.Y=1881mil|Location2.Y=2299mil|Absolute=True">NetP13_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3324264">332.426mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1551mil|Location2.X=2470mil|Location1.Y=2201mil|Location2.Y=2730mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1551mil|Location2.X=2470mil|Location1.Y=2201mil|Location2.Y=2730mil|Absolute=True">NetP13_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="11539768">1153.977mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1963mil|Location2.X=2034mil|Location1.Y=2683.5mil|Location2.Y=2869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1963mil|Location2.X=2034mil|Location1.Y=2683.5mil|Location2.Y=2869mil|Absolute=True">NetP3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1087071">108.707mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1866mil|Location2.X=2004mil|Location1.Y=2771mil|Location2.Y=3044mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1866mil|Location2.X=2004mil|Location1.Y=2771mil|Location2.Y=3044mil|Absolute=True">NetP3_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2224264">222.426mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49864.004mil|Location2.X=50183.027mil|Location1.Y=49915.973mil|Location2.Y=50034.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49864.004mil|Location2.X=50183.027mil|Location1.Y=49915.973mil|Location2.Y=50034.996mil|Absolute=True">NetP7_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2006.473mil|Location2.X=2154mil|Location1.Y=1381mil|Location2.Y=1479mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2006.473mil|Location2.X=2154mil|Location1.Y=1381mil|Location2.Y=1479mil|Absolute=True">NetQ5_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="854304">85.43mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1905mil|Location2.X=1975mil|Location1.Y=1381mil|Location2.Y=1679mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1905mil|Location2.X=1975mil|Location1.Y=1381mil|Location2.Y=1679mil|Absolute=True">NetQ5_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2000000">200mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2006.473mil|Location2.X=2389mil|Location1.Y=1602.5mil|Location2.Y=2043.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2006.473mil|Location2.X=2389mil|Location1.Y=1602.5mil|Location2.Y=2043.37mil|Absolute=True">NetR13_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7470086">747.009mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2791mil|Location2.X=2964mil|Location1.Y=2163.5mil|Location2.Y=2233.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2791mil|Location2.X=2964mil|Location1.Y=2163.5mil|Location2.Y=2233.528mil|Absolute=True">NetR15_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="948284">94.828mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50042.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50042.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True">NetR2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50042.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=49815.973mil|Location2.X=50042.87mil|Location1.Y=49956.13mil|Location2.Y=50083.027mil|Absolute=True">NetR6_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021mil|Location2.X=2299mil|Location1.Y=2446.63mil|Location2.Y=2533.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2021mil|Location2.X=2299mil|Location1.Y=2446.63mil|Location2.Y=2533.37mil|Absolute=True">NetRP1_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1800000">180mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1551mil|Location2.X=1819mil|Location1.Y=2546.63mil|Location2.Y=2633.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1551mil|Location2.X=1819mil|Location1.Y=2546.63mil|Location2.Y=2633.37mil|Absolute=True">NetRP2_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1700000">170mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3196.63mil|Location2.X=3693.37mil|Location1.Y=2521mil|Location2.Y=2799mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3196.63mil|Location2.X=3693.37mil|Location1.Y=2521mil|Location2.Y=2799mil|Absolute=True">NetRP3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5900000">590mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271mil|Location2.X=4612.5mil|Location1.Y=2607mil|Location2.Y=2692.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271mil|Location2.X=4612.5mil|Location1.Y=2607mil|Location2.Y=2692.756mil|Absolute=True">Net_10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2698099">269.81mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271mil|Location2.X=4612.5mil|Location1.Y=2716.472mil|Location2.Y=2796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271mil|Location2.X=4612.5mil|Location1.Y=2716.472mil|Location2.Y=2796mil|Absolute=True">Net_11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2746274">274.627mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271mil|Location2.X=4799mil|Location1.Y=2828.441mil|Location2.Y=3263.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271mil|Location2.X=4799mil|Location1.Y=2828.441mil|Location2.Y=3263.528mil|Absolute=True">Net_12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5437680">543.768mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572mil|Location2.X=4069mil|Location1.Y=3043.244mil|Location2.Y=3191.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572mil|Location2.X=4069mil|Location1.Y=3043.244mil|Location2.Y=3191.559mil|Absolute=True">Net_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4514857">451.486mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3647.5mil|Location2.X=4069mil|Location1.Y=2471mil|Location2.Y=3091.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3647.5mil|Location2.X=4069mil|Location1.Y=2471mil|Location2.Y=3091.559mil|Absolute=True">Net_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="11679558">1167.956mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3971mil|Location2.X=4369mil|Location1.Y=2511mil|Location2.Y=2991.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3971mil|Location2.X=4369mil|Location1.Y=2511mil|Location2.Y=2991.559mil|Absolute=True">Net_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6459898">645.99mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3971mil|Location2.X=4799mil|Location1.Y=2728.441mil|Location2.Y=3463.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3971mil|Location2.X=4799mil|Location1.Y=2728.441mil|Location2.Y=3463.528mil|Absolute=True">Net_6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="13141192">1314.119mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572mil|Location2.X=4069mil|Location1.Y=2628.441mil|Location2.Y=3012.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\tomib\OneDrive\Documentos\GitHub\Tesis\Altium\Amplificador Clase D.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572mil|Location2.X=4069mil|Location1.Y=2628.441mil|Location2.Y=3012.756mil|Absolute=True">Net_7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6329756">632.976mils
+			</a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
