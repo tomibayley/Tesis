@@ -1,11 +1,10 @@
 /* FILTROS:
 
-            Pasa-Bajo 250
-            Pasa-Banda 250-1000
+            Pasa-Bajo 300
+            Pasa-Banda 300-1000
             Pasa-Banda 1000-6000
             Pasa-Alto 6000
 */
-
 
 //#include <wirish/wirish.h>
 //#include "libraries/FreeRTOS/MapleFreeRTOS.h"
@@ -30,15 +29,6 @@
 #define ColorPuntos 0x18C3
 
 
-//#define pinV PA1
-//#define pinG PA9
-//#define pinM PA8
-//#define pinA PB9
-//#define pinMA PA0
-
-//#define PWMA PA0
-#define PWMB PA10
-
 // PINES DISPLAY
 #define TFT_DC PB0
 #define TFT_CS PB10
@@ -52,7 +42,7 @@
 //PA3-->TX    PA2 -->RX BLUETOOTH
 
 //Pines Touch
-#define t_SCK  PB14
+#define t_SCK  PB4      //PB14
 #define t_CS   PB5
 #define t_MOSI PB6
 #define t_MISO PB7
@@ -60,7 +50,8 @@
 
 //Pines AD5206
 
-#define slaveSelectPin PB9
+#define slaveSelectPin PA0
+#define slaveSelectPin2 PA10
 
 //Instanciamos la TFT
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
@@ -78,8 +69,6 @@ int h = 1000;
 void setup() {
   SETUP();
   Serial.begin(9600);
-
-
 
   xTaskCreate(vLEDFlashTask,
               "Task1",
@@ -156,16 +145,8 @@ void SETUP() {
   /****************************Puertos y BT***************************/
 
   Serial2.begin(9600);    //Puerto Módulo BT
-  /*pinMode(pinV, PWM);
-    pinMode(pinG, PWM);
-    pinMode(pinM, PWM);
-    pinMode(pinA, PWM);
-    pinMode(pinMA, PWM);*/
   pinMode(slaveSelectPin, OUTPUT);
-
-  //pinMode(PWMA, OUTPUT);
-  //pinMode(PWMB, OUTPUT);
-
+  pinMode(slaveSelectPin2, OUTPUT);
   pinMode(BOARD_LED_PIN, OUTPUT);
   /*****************/
   InterfazConBarra();
@@ -202,7 +183,6 @@ void InterfazConBarra()
   tft.print(ag);
 
   tft.setCursor(36 + 2 * dif, 10);
-  //tft.print("Medios: ");
   tft.print(me);
 
   tft.setCursor(36 + 3 * dif, 10);
@@ -482,10 +462,6 @@ static void touchtask(void *pvParameters) {
       x = x ;
       y = y + 5;
       MoverSlider(x, y);
-      /* Serial.println("TOUCH:");
-         Serial.println(x);
-         Serial.println(y);
-         delay(1000);*/
       Retorno();
       //Salidas();
       /* digitalWrite(PC13, HIGH);
@@ -640,17 +616,27 @@ void potWrite(int address, int valor) {  //value
   // take the SS pin low to select the chip:
   //digitalWrite(TFT_CS, HIGH); //REVISAR*****************************************************************************************************
   digitalWrite(slaveSelectPin, LOW);
-  delay(100);
+  delay(50);
   //  send in the address and value via SPI:
   SPI.transfer(address);
   SPI.transfer(valor); //value
-  delay(100);
+  //delay(100);
   // take the SS pin high to de-select the chip:
   digitalWrite(slaveSelectPin, HIGH);
-  Serial.print("COMUNICACION FINALIZADA addres : ");
-  Serial.println(address);
-  Serial.print("valor: ");
-  Serial.println(valor);
+  //Serial.print("COMUNICACION FINALIZADA addres : ");
+  //Serial.println(address);
+  //Serial.print("valor: ");
+  //Serial.println(valor);
+
+
+  digitalWrite(slaveSelectPin2, LOW);
+  delay(50);
+  //  send in the address and value via SPI:
+  SPI.transfer(address);
+  SPI.transfer(valor); //value
+  //delay(100);
+  // take the SS pin high to de-select the chip:
+  digitalWrite(slaveSelectPin2, HIGH);
 }
 
 
