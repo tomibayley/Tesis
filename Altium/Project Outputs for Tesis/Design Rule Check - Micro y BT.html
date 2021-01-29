@@ -1,0 +1,613 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">29/1/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">13:30:10</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc" class="file"><acronym title="C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc">C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">91</td></tr>
+</table>
+</td>
+</table><a name="IDDDMV53QLPYP5FR1A0E0A1FV3XC2XX1E1USUJ1J4PTBVXYVGUQMO"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2TEXUT2V4VI1OACPCIJQFBOPJQ2JPZQAVWRDIDQDWYNKYIM5N3L">Clearance Constraint (Gap=20mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3TTZK3EVVAS1E0GOF2DJJGDYQC2CJDCKX5GBZALBWFPWBZVKMSGN">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPXSQY5G5HVRFPMFAMYHFVG10CJELQACNMUCLJMDNMQYGJLIYESN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">27</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID152GOTEI2QZHB522AHZKENG2OEXPTXICNBRDDGDUGTUUATWLQIJB">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBDEUJ5FWV4FJHNCNIPWOTG1LGCH4LL3JTV4I2KM0ZMS3WT200WC">Width Constraint (Min=60mil) (Max=60mil) (Preferred=60mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0SHS1E3NBY04KNULNCSVDGLM4CC4YRNXVSACA5CBQ534NORVXV5J">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQWWLNI2RX3IXKBNBP05UUV0HULTSUSMMUINEHZGVYAOCEDWVQI1M">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZFQXTQGONQCAE3BGSI5O3OIWIJRACDRWQJEOTYJRFTCDZLS2GWMJ">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDR5FEH0WZQ54ILHLBGQCMJXPBJGTM0YPTM3QTYM44YLTHX14EYHP">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1XDZHKR2BWW0ND5Y1SH0IV05GH0HAJACKL1ASCDZS0D2D4XW3PAN">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">45</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDG2QJ2XERYGQ2NA5KOE0P1QGADGOZ221LTBJCOLEY0AA0DAAUSRM">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">18</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQVVEDX2TII5RI5A5LOB51Z0ZDOI22HYDZXKCO4KP41VRY3YQJ2DF">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHWP11RKARLYUIVFSKO3VMGRUVETXX2W24CSDKTIHRHQDZT3SHNAN">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">91</td>
+</tr>
+</table><br><a name="IDPXSQY5G5HVRFPMFAMYHFVG10CJELQACNMUCLJMDNMQYGJLIYESN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4076mil|Location2.X=7423.37mil|Location1.Y=3661mil|Location2.Y=7398.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4076mil|Location2.X=7423.37mil|Location1.Y=3661mil|Location2.Y=7398.37mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad Blue 1-39(4130mil,3700mil) on Multi-Layer And Pad RP12-2(7380mil,7355mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10459.504mil|Location2.X=12230.496mil|Location1.Y=6564.504mil|Location2.Y=7550.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10459.504mil|Location2.X=12230.496mil|Location1.Y=6564.504mil|Location2.Y=7550.496mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad C119-1(10495mil,6600mil) on Multi-Layer And Pad C124-1(12195mil,7515mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10229.504mil|Location2.X=10630.496mil|Location1.Y=6564.504mil|Location2.Y=7660.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10229.504mil|Location2.X=10630.496mil|Location1.Y=6564.504mil|Location2.Y=7660.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C125-2(10265mil,7625mil) on Multi-Layer And Pad C119-2(10595mil,6600mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3981mil|Location2.X=10384mil|Location1.Y=1916mil|Location2.Y=6349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3981mil|Location2.X=10384mil|Location1.Y=1916mil|Location2.Y=6349mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Via (4010mil,1945mil) from Top Layer to Bottom Layer And Pad C121-2(10345mil,6310mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11844.504mil|Location2.X=16913.528mil|Location1.Y=7479.504mil|Location2.Y=7628.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11844.504mil|Location2.X=16913.528mil|Location1.Y=7479.504mil|Location2.Y=7628.528mil|Absolute=True">Un-Routed Net Constraint: Net 12V Between Pad C123-1(11880mil,7515mil) on Multi-Layer And Pad P20-3(16880mil,7595mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8156.63mil|Location2.X=11915.496mil|Location1.Y=7479.504mil|Location2.Y=7598.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8156.63mil|Location2.X=11915.496mil|Location1.Y=7479.504mil|Location2.Y=7598.37mil|Absolute=True">Un-Routed Net Constraint: Net 12V Between Pad RP11-1(8200mil,7555mil) on Multi-Layer And Pad C123-1(11880mil,7515mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11944.504mil|Location2.X=12330.496mil|Location1.Y=7479.504mil|Location2.Y=7550.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11944.504mil|Location2.X=12330.496mil|Location1.Y=7479.504mil|Location2.Y=7550.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C123-2(11980mil,7515mil) on Multi-Layer And Pad C124-2(12295mil,7515mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10229.504mil|Location2.X=12015.496mil|Location1.Y=7479.504mil|Location2.Y=7660.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10229.504mil|Location2.X=12015.496mil|Location1.Y=7479.504mil|Location2.Y=7660.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C125-2(10265mil,7625mil) on Multi-Layer And Pad C123-2(11980mil,7515mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12259.504mil|Location2.X=16913.528mil|Location1.Y=7461.472mil|Location2.Y=7550.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12259.504mil|Location2.X=16913.528mil|Location1.Y=7461.472mil|Location2.Y=7550.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C124-2(12295mil,7515mil) on Multi-Layer And Pad P20-2(16880mil,7495mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12259.504mil|Location2.X=12800.496mil|Location1.Y=6649.504mil|Location2.Y=7550.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12259.504mil|Location2.X=12800.496mil|Location1.Y=6649.504mil|Location2.Y=7550.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C124-2(12295mil,7515mil) on Multi-Layer And Pad U14-2(12765mil,6685mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9446.472mil|Location2.X=10200.496mil|Location1.Y=7576.472mil|Location2.Y=7660.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9446.472mil|Location2.X=10200.496mil|Location1.Y=7576.472mil|Location2.Y=7660.496mil|Absolute=True">Un-Routed Net Constraint: Net 3.3V Between Pad C128-2(9480mil,7610mil) on Multi-Layer And Pad C125-1(10165mil,7625mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9446.472mil|Location2.X=10300.496mil|Location1.Y=7376.472mil|Location2.Y=7660.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9446.472mil|Location2.X=10300.496mil|Location1.Y=7376.472mil|Location2.Y=7660.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C128-1(9480mil,7410mil) on Multi-Layer And Pad C125-2(10265mil,7625mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9212.378mil|Location2.X=9513.528mil|Location1.Y=7242.378mil|Location2.Y=7443.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9212.378mil|Location2.X=9513.528mil|Location1.Y=7242.378mil|Location2.Y=7443.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C127-1(9240mil,7270mil) on Multi-Layer And Pad C128-1(9480mil,7410mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8156.63mil|Location2.X=9267.622mil|Location1.Y=7242.378mil|Location2.Y=7398.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8156.63mil|Location2.X=9267.622mil|Location1.Y=7242.378mil|Location2.Y=7398.37mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad RP11-2(8200mil,7355mil) on Multi-Layer And Pad C127-1(9240mil,7270mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9212.378mil|Location2.X=9513.528mil|Location1.Y=7542.378mil|Location2.Y=7643.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9212.378mil|Location2.X=9513.528mil|Location1.Y=7542.378mil|Location2.Y=7643.528mil|Absolute=True">Un-Routed Net Constraint: Net 3.3V Between Pad C127-2(9240mil,7570mil) on Multi-Layer And Pad C128-2(9480mil,7610mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.888mil|Location2.X=9340mil|Location1.Y=3699.112mil|Location2.Y=7670mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4100.888mil|Location2.X=9340mil|Location1.Y=3699.112mil|Location2.Y=7670mil|Absolute=True">Un-Routed Net Constraint: Net 3.3V Between Track (4200.888mil,3799.112mil)(4360mil,3640mil) on Bottom Layer And Pad C127-2(9240mil,7570mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3810mil|Location2.X=4090mil|Location1.Y=1335mil|Location2.Y=1725mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3810mil|Location2.X=4090mil|Location1.Y=1335mil|Location2.Y=1725mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P18-3(3910mil,1435mil) on Multi-Layer And Track (3990mil,1625mil)(4250mil,1625mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7336.63mil|Location2.X=16913.528mil|Location1.Y=7361.472mil|Location2.Y=7598.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7336.63mil|Location2.X=16913.528mil|Location1.Y=7361.472mil|Location2.Y=7598.37mil|Absolute=True">Un-Routed Net Constraint: Net -12V Between Pad RP12-1(7380mil,7555mil) on Multi-Layer And Pad P20-1(16880mil,7395mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13946.472mil|Location2.X=14256.5mil|Location1.Y=7001.472mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13946.472mil|Location2.X=14256.5mil|Location1.Y=7001.472mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_1 Between Pad P22-1(13980mil,7035mil) on Multi-Layer And Pad R114-2(14222mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13682.5mil|Location2.X=14013.528mil|Location1.Y=7101.472mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13682.5mil|Location2.X=14013.528mil|Location1.Y=7101.472mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_2 Between Pad R115-2(13717mil,7626mil) on Bottom Layer And Pad P22-2(13980mil,7135mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15087.5mil|Location2.X=15426.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=15087.5mil|Location2.X=15426.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_1 Between Pad R112-2(15122mil,7626mil) on Bottom Layer And Pad R111-2(15392mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14457.5mil|Location2.X=15156.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14457.5mil|Location2.X=15156.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_1 Between Pad R113-2(14492mil,7626mil) on Bottom Layer And Pad R112-2(15122mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14187.5mil|Location2.X=14526.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14187.5mil|Location2.X=14526.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_1 Between Pad R114-2(14222mil,7626mil) on Bottom Layer And Pad R113-2(14492mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13412.5mil|Location2.X=13751.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13412.5mil|Location2.X=13751.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_2 Between Pad R116-2(13447mil,7626mil) on Bottom Layer And Pad R115-2(13717mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13147.5mil|Location2.X=13481.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13147.5mil|Location2.X=13481.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_2 Between Pad R117-2(13182mil,7626mil) on Bottom Layer And Pad R116-2(13447mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12877.5mil|Location2.X=13216.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12877.5mil|Location2.X=13216.5mil|Location1.Y=7602.5mil|Location2.Y=7649.5mil|Absolute=True">Un-Routed Net Constraint: Net NetP22_2 Between Pad R118-2(12912mil,7626mil) on Bottom Layer And Pad R117-2(13182mil,7626mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7336.63mil|Location2.X=8243.37mil|Location1.Y=7311.63mil|Location2.Y=7398.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7336.63mil|Location2.X=8243.37mil|Location1.Y=7311.63mil|Location2.Y=7398.37mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad RP12-2(7380mil,7355mil) on Multi-Layer And Pad RP11-2(8200mil,7355mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDR5FEH0WZQ54ILHLBGQCMJXPBJGTM0YPTM3QTYM44YLTHX14EYHP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11030.861mil|Location2.X=11042.111mil|Location1.Y=6358.875mil|Location2.Y=6370.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11030.861mil|Location2.X=11042.111mil|Location1.Y=6358.875mil|Location2.Y=6370.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (9.973mil &lt; 10mil) Between Pad LED1-1(11075mil,6380mil) on Multi-Layer And Pad R110-1(10997mil,6388mil) on Bottom Layer [Bottom Solder] Mask Sliver [9.973mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID1XDZHKR2BWW0ND5Y1SH0IV05GH0HAJACKL1ASCDZS0D2D4XW3PAN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10613.603mil|Location2.X=10621.269mil|Location1.Y=6327.762mil|Location2.Y=6335.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10613.603mil|Location2.X=10621.269mil|Location1.Y=6327.762mil|Location2.Y=6335.428mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (10495mil,6160mil) on Top Overlay And Pad C121-1(10645mil,6310mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10333.225mil|Location2.X=10344.475mil|Location1.Y=6312.335mil|Location2.Y=6323.585mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10333.225mil|Location2.X=10344.475mil|Location1.Y=6312.335mil|Location2.Y=6323.585mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.961mil &lt; 10mil) Between Arc (10495mil,6160mil) on Top Overlay And Pad C121-2(10345mil,6310mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.961mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10614.46mil|Location2.X=10622.126mil|Location1.Y=6283.543mil|Location2.Y=6291.21mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10614.46mil|Location2.X=10622.126mil|Location1.Y=6283.543mil|Location2.Y=6291.21mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (10495mil,6460mil) on Top Overlay And Pad C121-1(10645mil,6310mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10337.227mil|Location2.X=10348.477mil|Location1.Y=6293.426mil|Location2.Y=6304.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10337.227mil|Location2.X=10348.477mil|Location1.Y=6293.426mil|Location2.Y=6304.676mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.697mil &lt; 10mil) Between Arc (10495mil,6460mil) on Top Overlay And Pad C121-2(10345mil,6310mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [8.697mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10613.963mil|Location2.X=10625.213mil|Location1.Y=6434.183mil|Location2.Y=6445.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10613.963mil|Location2.X=10625.213mil|Location1.Y=6434.183mil|Location2.Y=6445.433mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.36mil &lt; 10mil) Between Arc (10545mil,6256.424mil) on Top Overlay And Pad C122-1(10645mil,6420mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.36mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10463.996mil|Location2.X=10475.246mil|Location1.Y=6435.227mil|Location2.Y=6446.477mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10463.996mil|Location2.X=10475.246mil|Location1.Y=6435.227mil|Location2.Y=6446.477mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.617mil &lt; 10mil) Between Arc (10545mil,6256.424mil) on Top Overlay And Pad C122-2(10445mil,6420mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.617mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10613.963mil|Location2.X=10625.213mil|Location1.Y=6394.567mil|Location2.Y=6405.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10613.963mil|Location2.X=10625.213mil|Location1.Y=6394.567mil|Location2.Y=6405.817mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.36mil &lt; 10mil) Between Arc (10545mil,6583.576mil) on Top Overlay And Pad C122-1(10645mil,6420mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.36mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10463.996mil|Location2.X=10475.246mil|Location1.Y=6393.523mil|Location2.Y=6404.773mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10463.996mil|Location2.X=10475.246mil|Location1.Y=6393.523mil|Location2.Y=6404.773mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.617mil &lt; 10mil) Between Arc (10545mil,6583.576mil) on Top Overlay And Pad C122-2(10445mil,6420mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.617mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11072.76mil|Location2.X=11084.01mil|Location1.Y=6343.452mil|Location2.Y=6354.702mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11072.76mil|Location2.X=11084.01mil|Location1.Y=6343.452mil|Location2.Y=6354.702mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.792mil &lt; 10mil) Between Arc (11125mil,6380mil) on Top Overlay And Pad LED1-1(11075mil,6380mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [2.792mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11072.76mil|Location2.X=11084.01mil|Location1.Y=6405.298mil|Location2.Y=6416.548mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11072.76mil|Location2.X=11084.01mil|Location1.Y=6405.298mil|Location2.Y=6416.548mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.792mil &lt; 10mil) Between Arc (11125mil,6380mil) on Top Overlay And Pad LED1-1(11075mil,6380mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [2.792mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3865.744mil|Location2.X=3876.994mil|Location1.Y=1224.379mil|Location2.Y=1235.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3865.744mil|Location2.X=3876.994mil|Location1.Y=1224.379mil|Location2.Y=1235.629mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.889mil &lt; 10mil) Between Arc (3740mil,1250mil) on Top Overlay And Pad C130-1(3910mil,1225mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [7.889mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3928.996mil|Location2.X=3940.246mil|Location1.Y=1345.227mil|Location2.Y=1356.477mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3928.996mil|Location2.X=3940.246mil|Location1.Y=1345.227mil|Location2.Y=1356.477mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.617mil &lt; 10mil) Between Arc (4010mil,1166.424mil) on Top Overlay And Pad C131-1(3910mil,1330mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.617mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4078.963mil|Location2.X=4090.213mil|Location1.Y=1344.183mil|Location2.Y=1355.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4078.963mil|Location2.X=4090.213mil|Location1.Y=1344.183mil|Location2.Y=1355.433mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.36mil &lt; 10mil) Between Arc (4010mil,1166.424mil) on Top Overlay And Pad C131-2(4110mil,1330mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.36mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3928.996mil|Location2.X=3940.246mil|Location1.Y=1303.523mil|Location2.Y=1314.773mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3928.996mil|Location2.X=3940.246mil|Location1.Y=1303.523mil|Location2.Y=1314.773mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.617mil &lt; 10mil) Between Arc (4010mil,1493.576mil) on Top Overlay And Pad C131-1(3910mil,1330mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.617mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4078.963mil|Location2.X=4090.213mil|Location1.Y=1304.567mil|Location2.Y=1315.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4078.963mil|Location2.X=4090.213mil|Location1.Y=1304.567mil|Location2.Y=1315.817mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.36mil &lt; 10mil) Between Arc (4010mil,1493.576mil) on Top Overlay And Pad C131-2(4110mil,1330mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [5.36mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3898.225mil|Location2.X=3909.475mil|Location1.Y=1227.335mil|Location2.Y=1238.585mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3898.225mil|Location2.X=3909.475mil|Location1.Y=1227.335mil|Location2.Y=1238.585mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.961mil &lt; 10mil) Between Arc (4060mil,1075mil) on Top Overlay And Pad C130-1(3910mil,1225mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.961mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4178.603mil|Location2.X=4186.269mil|Location1.Y=1242.762mil|Location2.Y=1250.428mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4178.603mil|Location2.X=4186.269mil|Location1.Y=1242.762mil|Location2.Y=1250.428mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (4060mil,1075mil) on Top Overlay And Pad C130-2(4210mil,1225mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3902.227mil|Location2.X=3913.477mil|Location1.Y=1208.426mil|Location2.Y=1219.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3902.227mil|Location2.X=3913.477mil|Location1.Y=1208.426mil|Location2.Y=1219.676mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.697mil &lt; 10mil) Between Arc (4060mil,1375mil) on Top Overlay And Pad C130-1(3910mil,1225mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [8.697mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4179.46mil|Location2.X=4187.126mil|Location1.Y=1198.543mil|Location2.Y=1206.21mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4179.46mil|Location2.X=4187.126mil|Location1.Y=1198.543mil|Location2.Y=1206.21mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (4060mil,1375mil) on Top Overlay And Pad C130-2(4210mil,1225mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7414.644mil|Location2.X=7425.894mil|Location1.Y=7589.165mil|Location2.Y=7600.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7414.644mil|Location2.X=7425.894mil|Location1.Y=7589.165mil|Location2.Y=7600.415mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.985mil &lt; 10mil) Between Arc (7445.056mil,7606.364mil) on Top Overlay And Pad RP12-1(7380mil,7555mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [1.985mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8234.644mil|Location2.X=8245.894mil|Location1.Y=7589.165mil|Location2.Y=7600.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8234.644mil|Location2.X=8245.894mil|Location1.Y=7589.165mil|Location2.Y=7600.415mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.985mil &lt; 10mil) Between Arc (8265.056mil,7606.364mil) on Top Overlay And Pad RP11-1(8200mil,7555mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [1.985mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9490.282mil|Location2.X=9501.532mil|Location1.Y=7432.753mil|Location2.Y=7444.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9490.282mil|Location2.X=9501.532mil|Location1.Y=7432.753mil|Location2.Y=7444.003mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.095mil &lt; 10mil) Between Arc (9316.424mil,7510mil) on Top Overlay And Pad C128-1(9480mil,7410mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [8.095mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9489.39mil|Location2.X=9500.64mil|Location1.Y=7575.454mil|Location2.Y=7586.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9489.39mil|Location2.X=9500.64mil|Location1.Y=7575.454mil|Location2.Y=7586.704mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.444mil &lt; 10mil) Between Arc (9316.424mil,7510mil) on Top Overlay And Pad C128-2(9480mil,7610mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [9.444mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9450.773mil|Location2.X=9462.023mil|Location1.Y=7426.791mil|Location2.Y=7438.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9450.773mil|Location2.X=9462.023mil|Location1.Y=7426.791mil|Location2.Y=7438.041mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.423mil &lt; 10mil) Between Arc (9643.576mil,7510mil) on Top Overlay And Pad C128-1(9480mil,7410mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [8.423mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9451.599mil|Location2.X=9462.849mil|Location1.Y=7581.239mil|Location2.Y=7592.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9451.599mil|Location2.X=9462.849mil|Location1.Y=7581.239mil|Location2.Y=7592.489mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.216mil &lt; 10mil) Between Arc (9643.576mil,7510mil) on Top Overlay And Pad C128-2(9480mil,7610mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [7.216mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10488.369mil|Location2.X=10499.619mil|Location1.Y=6630.121mil|Location2.Y=6641.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10488.369mil|Location2.X=10499.619mil|Location1.Y=6630.121mil|Location2.Y=6641.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C119-1(10495mil,6600mil) on Multi-Layer And Text "+" (10474mil,6635mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10778.629mil|Location2.X=10789.879mil|Location1.Y=6318.368mil|Location2.Y=6329.618mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10778.629mil|Location2.X=10789.879mil|Location1.Y=6318.368mil|Location2.Y=6329.618mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C120-1(10820mil,6325mil) on Multi-Layer And Text "+" (10785mil,6304mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10614.957mil|Location2.X=10622.623mil|Location1.Y=6282.947mil|Location2.Y=6290.613mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10614.957mil|Location2.X=10622.623mil|Location1.Y=6282.947mil|Location2.Y=6290.613mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C121-1(10645mil,6310mil) on Multi-Layer And Text "P19" (10551mil,6254mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10418.859mil|Location2.X=10426.525mil|Location1.Y=6403.068mil|Location2.Y=6410.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10418.859mil|Location2.X=10426.525mil|Location1.Y=6403.068mil|Location2.Y=6410.734mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C122-2(10445mil,6420mil) on Multi-Layer And Text "C121" (10316mil,6407mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11873.369mil|Location2.X=11884.619mil|Location1.Y=7545.121mil|Location2.Y=7556.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11873.369mil|Location2.X=11884.619mil|Location1.Y=7545.121mil|Location2.Y=7556.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C123-1(11880mil,7515mil) on Multi-Layer And Text "+" (11859mil,7550mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12188.369mil|Location2.X=12199.619mil|Location1.Y=7545.121mil|Location2.Y=7556.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12188.369mil|Location2.X=12199.619mil|Location1.Y=7545.121mil|Location2.Y=7556.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C124-1(12195mil,7515mil) on Multi-Layer And Text "+" (12174mil,7550mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10158.369mil|Location2.X=10169.619mil|Location1.Y=7655.121mil|Location2.Y=7666.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10158.369mil|Location2.X=10169.619mil|Location1.Y=7655.121mil|Location2.Y=7666.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C125-1(10165mil,7625mil) on Multi-Layer And Text "+" (10144mil,7660mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10778.629mil|Location2.X=10789.879mil|Location1.Y=6598.368mil|Location2.Y=6609.618mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10778.629mil|Location2.X=10789.879mil|Location1.Y=6598.368mil|Location2.Y=6609.618mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C126-1(10820mil,6605mil) on Multi-Layer And Text "+" (10785mil,6584mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10841.587mil|Location2.X=10849.253mil|Location1.Y=6572.622mil|Location2.Y=6580.289mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10841.587mil|Location2.X=10849.253mil|Location1.Y=6572.622mil|Location2.Y=6580.289mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C126-1(10820mil,6605mil) on Multi-Layer And Text "C120" (10697mil,6538mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3698.629mil|Location2.X=3709.879mil|Location1.Y=1193.369mil|Location2.Y=1204.619mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3698.629mil|Location2.X=3709.879mil|Location1.Y=1193.369mil|Location2.Y=1204.619mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.501mil &lt; 10mil) Between Pad C129-1(3740mil,1200mil) on Multi-Layer And Text "+" (3705mil,1179mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.501mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3882.912mil|Location2.X=3890.579mil|Location1.Y=1322.418mil|Location2.Y=1330.084mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3882.912mil|Location2.X=3890.579mil|Location1.Y=1322.418mil|Location2.Y=1330.084mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C131-1(3910mil,1330mil) on Multi-Layer And Text "C130" (3881mil,1322mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4083.406mil|Location2.X=4091.073mil|Location1.Y=1328.052mil|Location2.Y=1335.718mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4083.406mil|Location2.X=4091.073mil|Location1.Y=1328.052mil|Location2.Y=1335.718mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C131-2(4110mil,1330mil) on Multi-Layer And Text "C130" (3881mil,1322mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11156.503mil|Location2.X=11167.753mil|Location1.Y=6345.663mil|Location2.Y=6356.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11156.503mil|Location2.X=11167.753mil|Location1.Y=6345.663mil|Location2.Y=6356.913mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.389mil &lt; 10mil) Between Pad LED1-2(11175mil,6380mil) on Multi-Layer And Track (11164.234mil,6335.862mil)(11164.234mil,6345mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.389mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11153.828mil|Location2.X=11165.078mil|Location1.Y=6401.84mil|Location2.Y=6413.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11153.828mil|Location2.X=11165.078mil|Location1.Y=6401.84mil|Location2.Y=6413.09mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.974mil &lt; 10mil) Between Pad LED1-2(11175mil,6380mil) on Multi-Layer And Track (11164.234mil,6415mil)(11164.234mil,6424.138mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.974mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3681.803mil|Location2.X=3689.47mil|Location1.Y=1409.167mil|Location2.Y=1416.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3681.803mil|Location2.X=3689.47mil|Location1.Y=1409.167mil|Location2.Y=1416.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad P18-1(3710mil,1435mil) on Multi-Layer And Text "C129" (3617mil,1413mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3788.08mil|Location2.X=3795.747mil|Location1.Y=1414.195mil|Location2.Y=1421.862mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3788.08mil|Location2.X=3795.747mil|Location1.Y=1414.195mil|Location2.Y=1421.862mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad P18-2(3810mil,1435mil) on Multi-Layer And Text "C129" (3617mil,1413mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3881.33mil|Location2.X=3888.997mil|Location1.Y=1443.278mil|Location2.Y=1450.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3881.33mil|Location2.X=3888.997mil|Location1.Y=1443.278mil|Location2.Y=1450.945mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad P18-3(3910mil,1435mil) on Multi-Layer And Text "C131" (3882mil,1401mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3991.094mil|Location2.X=3998.761mil|Location1.Y=1411.191mil|Location2.Y=1418.857mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3991.094mil|Location2.X=3998.761mil|Location1.Y=1411.191mil|Location2.Y=1418.857mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad P18-4(4010mil,1435mil) on Multi-Layer And Text "C131" (3882mil,1401mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8237.061mil|Location2.X=8248.311mil|Location1.Y=7588.64mil|Location2.Y=7599.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8237.061mil|Location2.X=8248.311mil|Location1.Y=7588.64mil|Location2.Y=7599.89mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.636mil &lt; 10mil) Between Pad RP11-1(8200mil,7555mil) on Multi-Layer And Track (8251mil,7594mil)(8278.5mil,7621.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [6.636mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7417.061mil|Location2.X=7428.311mil|Location1.Y=7588.64mil|Location2.Y=7599.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7417.061mil|Location2.X=7428.311mil|Location1.Y=7588.64mil|Location2.Y=7599.89mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (6.636mil &lt; 10mil) Between Pad RP12-1(7380mil,7555mil) on Multi-Layer And Track (7431mil,7594mil)(7458.5mil,7621.5mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [6.636mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDG2QJ2XERYGQ2NA5KOE0P1QGADGOZ221LTBJCOLEY0AA0DAAUSRM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10619.526mil|Location2.X=10630.776mil|Location1.Y=6313.458mil|Location2.Y=6324.708mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10619.526mil|Location2.X=10630.776mil|Location1.Y=6313.458mil|Location2.Y=6324.708mil|Absolute=True">Silk To Silk Clearance Constraint: (3.184mil &lt; 10mil) Between Arc (10495mil,6160mil) on Top Overlay And Text "P19" (10551mil,6254mil) on Top Overlay Silk Text to Silk Clearance [3.184mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10547.167mil|Location2.X=10554.833mil|Location1.Y=6251.56mil|Location2.Y=6259.226mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10547.167mil|Location2.X=10554.833mil|Location1.Y=6251.56mil|Location2.Y=6259.226mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (10495mil,6460mil) on Top Overlay And Text "P19" (10551mil,6254mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10492.109mil|Location2.X=10499.775mil|Location1.Y=6446.48mil|Location2.Y=6454.147mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10492.109mil|Location2.X=10499.775mil|Location1.Y=6446.48mil|Location2.Y=6454.147mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (10545mil,6256.424mil) on Top Overlay And Text "C121" (10316mil,6407mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10478.13mil|Location2.X=10489.38mil|Location1.Y=6394.827mil|Location2.Y=6406.077mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10478.13mil|Location2.X=10489.38mil|Location1.Y=6394.827mil|Location2.Y=6406.077mil|Absolute=True">Silk To Silk Clearance Constraint: (3.81mil &lt; 10mil) Between Arc (10545mil,6583.576mil) on Top Overlay And Text "C121" (10316mil,6407mil) on Top Overlay Silk Text to Silk Clearance [3.81mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10493.403mil|Location2.X=10504.653mil|Location1.Y=6469.725mil|Location2.Y=6480.975mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10493.403mil|Location2.X=10504.653mil|Location1.Y=6469.725mil|Location2.Y=6480.975mil|Absolute=True">Silk To Silk Clearance Constraint: (7.84mil &lt; 10mil) Between Arc (10545mil,6600mil) on Top Overlay And Text "C121" (10316mil,6407mil) on Top Overlay Silk Text to Silk Clearance [7.84mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10426.18mil|Location2.X=10433.846mil|Location1.Y=6547.147mil|Location2.Y=6554.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10426.18mil|Location2.X=10433.846mil|Location1.Y=6547.147mil|Location2.Y=6554.814mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (10545mil,6600mil) on Top Overlay And Text "C122" (10418mil,6491mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10701.632mil|Location2.X=10712.882mil|Location1.Y=6302.12mil|Location2.Y=6313.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10701.632mil|Location2.X=10712.882mil|Location1.Y=6302.12mil|Location2.Y=6313.37mil|Absolute=True">Silk To Silk Clearance Constraint: (4.684mil &lt; 10mil) Between Arc (10820mil,6375mil) on Top Overlay And Text "P19" (10551mil,6254mil) on Top Overlay Silk Text to Silk Clearance [4.684mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.929mil|Location2.X=10712.596mil|Location1.Y=6594.147mil|Location2.Y=6601.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.929mil|Location2.X=10712.596mil|Location1.Y=6594.147mil|Location2.Y=6601.814mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (10820mil,6655mil) on Top Overlay And Text "C120" (10697mil,6538mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3947.144mil|Location2.X=3954.811mil|Location1.Y=1353.683mil|Location2.Y=1361.35mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3947.144mil|Location2.X=3954.811mil|Location1.Y=1353.683mil|Location2.Y=1361.35mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (4010mil,1166.424mil) on Top Overlay And Text "C130" (3881mil,1322mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3935.971mil|Location2.X=3947.221mil|Location1.Y=1308.194mil|Location2.Y=1319.444mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3935.971mil|Location2.X=3947.221mil|Location1.Y=1308.194mil|Location2.Y=1319.444mil|Absolute=True">Silk To Silk Clearance Constraint: (6.362mil &lt; 10mil) Between Arc (4010mil,1493.576mil) on Top Overlay And Text "C130" (3881mil,1322mil) on Top Overlay Silk Text to Silk Clearance [6.362mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10727.673mil|Location2.X=10735.34mil|Location1.Y=6596.65mil|Location2.Y=6604.317mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10727.673mil|Location2.X=10735.34mil|Location1.Y=6596.65mil|Location2.Y=6604.317mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "+" (10785mil,6584mil) on Top Overlay And Text "C120" (10697mil,6538mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3655.192mil|Location2.X=3662.858mil|Location1.Y=1459.15mil|Location2.Y=1466.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3655.192mil|Location2.X=3662.858mil|Location1.Y=1459.15mil|Location2.Y=1466.817mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "C129" (3617mil,1413mil) on Top Overlay And Track (3660mil,1385mil)(3660mil,1485mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3681.352mil|Location2.X=3692.602mil|Location1.Y=1473.897mil|Location2.Y=1485.147mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3681.352mil|Location2.X=3692.602mil|Location1.Y=1473.897mil|Location2.Y=1485.147mil|Absolute=True">Silk To Silk Clearance Constraint: (3.082mil &lt; 10mil) Between Text "C129" (3617mil,1413mil) on Top Overlay And Track (3660mil,1485mil)(4060mil,1485mil) on Top Overlay Silk Text to Silk Clearance [3.082mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3905.365mil|Location2.X=3916.615mil|Location1.Y=1385.865mil|Location2.Y=1397.115mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3905.365mil|Location2.X=3916.615mil|Location1.Y=1385.865mil|Location2.Y=1397.115mil|Absolute=True">Silk To Silk Clearance Constraint: (9.019mil &lt; 10mil) Between Text "C130" (3881mil,1322mil) on Top Overlay And Text "C131" (3882mil,1401mil) on Top Overlay Silk Text to Silk Clearance [9.019mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3907.157mil|Location2.X=3914.824mil|Location1.Y=1380.188mil|Location2.Y=1387.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3907.157mil|Location2.X=3914.824mil|Location1.Y=1380.188mil|Location2.Y=1387.855mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "C130" (3881mil,1322mil) on Top Overlay And Track (3660mil,1385mil)(4060mil,1385mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4056.479mil|Location2.X=4064.146mil|Location1.Y=1380.164mil|Location2.Y=1387.831mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4056.479mil|Location2.X=4064.146mil|Location1.Y=1380.164mil|Location2.Y=1387.831mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "C130" (3881mil,1322mil) on Top Overlay And Track (4060mil,1385mil)(4060mil,1485mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3886.372mil|Location2.X=3897.622mil|Location1.Y=1386.843mil|Location2.Y=1398.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3886.372mil|Location2.X=3897.622mil|Location1.Y=1386.843mil|Location2.Y=1398.093mil|Absolute=True">Silk To Silk Clearance Constraint: (7.063mil &lt; 10mil) Between Text "C131" (3882mil,1401mil) on Top Overlay And Track (3660mil,1385mil)(4060mil,1385mil) on Top Overlay Silk Text to Silk Clearance [7.063mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4056.167mil|Location2.X=4063.833mil|Location1.Y=1397.167mil|Location2.Y=1404.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\IMC\Documents\GitHub\Tesis\Altium\Micro y BT.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4056.167mil|Location2.X=4063.833mil|Location1.Y=1397.167mil|Location2.Y=1404.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "C131" (3882mil,1401mil) on Top Overlay And Track (4060mil,1385mil)(4060mil,1485mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
